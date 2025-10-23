@@ -16,17 +16,39 @@ const Contact = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: 'Message Sent!',
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: '', email: '', businessName: '', message: '' });
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Netlify form submission
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        "form-name": "contact",
+        name: formData.name,
+        email: formData.email,
+        businessName: formData.businessName,
+        message: formData.message,
+      }).toString(),
+    })
+      .then(() => {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: '', email: '', businessName: '', message: '' });
+      })
+      .catch((error) => {
+        toast({
+          title: "Error Sending Message",
+          description: "Please try again later.",
+        });
+        console.error(error);
+      });
   };
 
   return (
@@ -50,12 +72,17 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 max-w-6xl mx-auto px-4">
           {/* Contact Form */}
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2"
-                >
+                <label htmlFor="name" className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2">
                   Full Name *
                 </label>
                 <Input
@@ -70,10 +97,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2"
-                >
+                <label htmlFor="email" className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2">
                   Email Address *
                 </label>
                 <Input
@@ -89,10 +113,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="businessName"
-                  className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2"
-                >
+                <label htmlFor="businessName" className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2">
                   Business Name *
                 </label>
                 <Input
@@ -107,10 +128,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2"
-                >
+                <label htmlFor="message" className="block text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2">
                   Tell Us About Your Goals *
                 </label>
                 <Textarea
@@ -158,10 +176,7 @@ const Contact = () => {
                   <Mail className="w-6 h-6 mr-4 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                   <div>
                     <div className="font-semibold mb-1">Email</div>
-                    <a
-                      href="mailto:nazxmedia@gmail.com"
-                      className="text-muted-foreground hover:text-foreground transition-smooth"
-                    >
+                    <a href="mailto:nazxmedia@gmail.com" className="text-muted-foreground hover:text-foreground transition-smooth">
                       nazxmedia@gmail.com
                     </a>
                   </div>
@@ -171,10 +186,7 @@ const Contact = () => {
                   <Phone className="w-6 h-6 mr-4 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                   <div>
                     <div className="font-semibold mb-1">Phone</div>
-                    <a
-                      href="tel:+1234567890"
-                      className="text-muted-foreground hover:text-foreground transition-smooth"
-                    >
+                    <a href="tel:+1234567890" className="text-muted-foreground hover:text-foreground transition-smooth">
                       +1 (226) 501-0816
                     </a>
                   </div>
@@ -190,46 +202,6 @@ const Contact = () => {
                       Canada
                     </p>
                   </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6 sm:p-8 surface-elevated border-border/50 hover-glow relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/[0.02] to-transparent rounded-full blur-2xl" />
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 relative z-10 animated-underline">
-                What Happens Next?
-              </h3>
-              <div className="space-y-3 sm:space-y-4 relative z-10">
-                <div>
-                  <div className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">
-                    1. Consultation
-                  </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    <span className="hidden sm:inline">
-                      We&apos;ll schedule a call to discuss your business, goals, and challenges in
-                      detail.
-                    </span>
-                    <span className="sm:hidden">Discuss your business and goals.</span>
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">2. Strategy</div>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    <span className="hidden sm:inline">
-                      We&apos;ll analyze your situation and present a tailored growth strategy.
-                    </span>
-                    <span className="sm:hidden">Tailored growth strategy.</span>
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">3. Dominate</div>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    <span className="hidden sm:inline">
-                      Once aligned, we&apos;ll implement the systems that position you to lead your
-                      market.
-                    </span>
-                    <span className="sm:hidden">Implement and lead.</span>
-                  </p>
                 </div>
               </div>
             </Card>
