@@ -1,52 +1,124 @@
-# naz-xmedia WEB
+# NAZ XMedia - Digital Marketing Dominance
 
-Lightweight Vite + React + TypeScript starter with Tailwind and shadcn-style components.
+![NAZ XMedia](./src/assets/nazxmedia-logo.jpg)
 
-Quick start
+**Engineered for Brands Built to Lead, Not Follow.**
 
-1. Install dependencies
+Modern, high-performance digital marketing website built with React, TypeScript, and Tailwind CSS.
+
+## 🚀 Tech Stack
+
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe development
+- **Vite** - Lightning-fast build tool
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - High-quality React components
+- **React Router** - Client-side routing
+- **Lucide Icons** - Beautiful icon library
+
+## 📦 Installation
 
 ```bash
+# Install dependencies (using Bun, npm, or yarn)
+bun install
+# or
 npm install
 ```
 
-2. Start development server
+## 🛠️ Development
 
 ```bash
+# Start development server (http://localhost:8080)
+bun run dev
+# or
 npm run dev
 ```
 
-3. Build for production
+## 🏗️ Build
 
 ```bash
+# Build for production
+bun run build
+# or
 npm run build
+
+# Preview production build
+bun run preview
 ```
 
-Useful commands
+## 📝 Available Scripts
 
-- `npm run dev` — start dev server (port 8080)
-- `npm run build` — build production bundle
-- `npm run preview` — preview the production build
-- `npm run lint` — run ESLint
+- `dev` - Start development server
+- `build` - Build for production
+- `build:dev` - Build in development mode
+- `preview` - Preview production build
+- `lint` - Run ESLint
+- `typecheck` - Run TypeScript type checking
+- `format` - Format code with Prettier
 
-Notes
+## 📁 Project Structure
 
-- This repo had missing UI component files initially. I added minimal stubs so the project builds. Replace them with your intended components when ready.
-# Welcome to your Lovable project
+```
+naz-xmedia/
+├── src/
+│   ├── assets/          # Images, logos, static files
+│   ├── components/      # Reusable components
+│   │   ├── ui/         # shadcn/ui components
+│   │   ├── Navigation.tsx
+│   │   ├── Footer.tsx
+│   │   └── ...
+│   ├── pages/          # Page components
+│   │   ├── Home.tsx
+│   │   ├── Services.tsx
+│   │   ├── About.tsx
+│   │   └── ...
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions
+│   ├── App.tsx         # Main app component
+│   ├── main.tsx        # Entry point
+│   └── index.css       # Global styles
+├── public/             # Static assets
+│   ├── robots.txt
+│   └── sitemap.xml
+└── ...config files
+```
 
-## Project info
+## 🎨 Design System
 
-**URL**: https://lovable.dev/projects/c03a0767-0b34-4df4-a458-61f42a38f42f
+The project uses a minimal black and white design system with:
+- Pure black background (#000000)
+- White text and accents
+- Subtle gradients and glow effects
+- Tech-inspired animations
 
-## How can I edit this code?
+All design tokens are defined in `src/index.css`.
 
-There are several ways of editing your application.
+## 🔧 Configuration
 
-**Use Lovable**
+- **TypeScript**: `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`
+- **Tailwind**: `tailwind.config.ts`
+- **Vite**: `vite.config.ts`
+- **ESLint**: `eslint.config.js`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c03a0767-0b34-4df4-a458-61f42a38f42f) and start prompting.
+## 🌐 SEO & Performance
 
-Changes made via Lovable will be committed automatically to this repo.
+- Optimized meta tags for social sharing
+- Sitemap and robots.txt included
+- Fast build times with Vite
+- Code splitting and lazy loading
+- Responsive design for all devices
+
+## 📄 License
+
+All Rights Reserved © 2025 NAZ XMedia
+
+## 🤝 Contact
+
+For inquiries, visit [nazxmedia.com](https://nazxmedia.com) or reach out through our contact page.
+
+---
+
+**Built with precision. Engineered for growth.**
 
 **Use your preferred IDE**
 
