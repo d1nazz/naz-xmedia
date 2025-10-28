@@ -71,19 +71,19 @@ const Navigation = () => {
             </SheetTrigger>
             <SheetContent
               side="left"
-              className="w-[300px] sm:w-[350px] surface-elevated border-border/50"
+              className="w-full sm:w-[320px] bg-black/95 backdrop-blur-2xl border-border/30 flex flex-col justify-between"
             >
-              <div className="flex flex-col gap-6 mt-8">
+              <div className="flex flex-col gap-8 mt-16 px-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      'text-base font-semibold uppercase tracking-wider py-3 px-4 rounded-sm transition-all relative group',
+                      'text-lg font-semibold uppercase tracking-wide py-3 px-4 rounded-md transition-all duration-200 relative group',
                       location.pathname === link.path
-                        ? 'text-foreground bg-white/5'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+                        ? 'text-white bg-white/10'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
                     )}
                   >
                     {link.name}
