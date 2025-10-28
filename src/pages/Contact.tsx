@@ -31,7 +31,8 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      <div className="container mx-auto px-6 py-20">
+      {/* Main wrapper */}
+      <div className="w-full px-6 py-20 bg-background">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-up max-w-4xl mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 scan-line tech-glow">
@@ -47,7 +48,8 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 max-w-6xl mx-auto px-4">
+        {/* Contact Section */}
+        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto px-6 lg:px-12 items-start">
           {/* Contact Form */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -172,7 +174,7 @@ const Contact = () => {
                   <div>
                     <div className="font-semibold mb-1">Phone</div>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+12265010816"
                       className="text-muted-foreground hover:text-foreground transition-smooth"
                     >
                       +1 (226) 501-0816
