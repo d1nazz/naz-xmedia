@@ -32,10 +32,10 @@ const Contact = () => {
   return (
     <PageLayout>
       {/* Main wrapper */}
-      <div className="w-full px-6 py-20 bg-background">
+      <div className="w-full px-4 sm:px-6 lg:px-12 py-12 sm:py-20 bg-background overflow-x-hidden">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-up max-w-4xl mx-auto px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 scan-line tech-glow">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 scan-line tech-glow leading-tight">
             <span className="hidden sm:inline">Begin Your Growth Journey</span>
             <span className="sm:hidden">Start Growing</span>
           </h1>
@@ -49,7 +49,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto px-6 lg:px-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-7xl mx-auto items-start">
           {/* Contact Form */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -66,7 +66,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-surface border-border/50"
+                  className="bg-surface border-border/50 h-12 text-base"
                   placeholder="John Doe"
                 />
               </div>
@@ -85,7 +85,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-surface border-border/50"
+                  className="bg-surface border-border/50 h-12 text-base"
                   placeholder="john@company.com"
                 />
               </div>
@@ -103,7 +103,7 @@ const Contact = () => {
                   value={formData.businessName}
                   onChange={handleChange}
                   required
-                  className="bg-surface border-border/50"
+                  className="bg-surface border-border/50 h-12 text-base"
                   placeholder="Your Company Inc."
                 />
               </div>
@@ -122,7 +122,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="bg-surface border-border/50"
+                  className="bg-surface border-border/50 text-base"
                   placeholder="What are your main business objectives? What challenges are you facing? What kind of results are you looking for?"
                 />
               </div>
@@ -130,7 +130,7 @@ const Contact = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full text-base font-bold uppercase tracking-wider py-6 group relative overflow-hidden"
+                className="w-full sm:w-auto text-sm sm:text-base font-bold uppercase tracking-wider py-4 sm:py-6 group relative overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <span className="relative">Send Message</span>
