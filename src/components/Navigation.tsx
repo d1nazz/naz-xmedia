@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import logo from '@/assets/nazxmedia-logo.jpg';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -20,9 +20,9 @@ const Navigation = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 backdrop-blur-xl bg-background/95">
       <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-5">
-        {/* Desktop Navigation - Hidden on mobile/tablet */}
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-between">
-          {/* Main Navigation Links */}
+          {/* Main Links */}
           <div className="flex items-center gap-10">
             {navLinks.map((link) => (
               <Link
@@ -34,7 +34,7 @@ const Navigation = () => {
                 )}
               >
                 {link.name}
-                {/* Animated underline on hover */}
+                {/* Hover underline */}
                 <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 {/* Active indicator */}
                 {location.pathname === link.path && (
@@ -44,7 +44,7 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Company Name & Logo - Desktop */}
+          {/* Logo + Name (Desktop) */}
           <Link to="/" className="flex items-center gap-3 group">
             <span className="text-xl font-bold tracking-wider uppercase tech-glow group-hover:tech-glow-strong transition-all">
               NAZ <span className="font-black">X</span>MEDIA
@@ -57,9 +57,9 @@ const Navigation = () => {
           </Link>
         </div>
 
-        {/* Mobile/Tablet Navigation */}
+        {/* Mobile Navigation */}
         <div className="lg:hidden flex items-center justify-between">
-          {/* Hamburger Menu */}
+          {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <button
@@ -69,11 +69,12 @@ const Navigation = () => {
                 <Menu className="w-6 h-6" />
               </button>
             </SheetTrigger>
+
             <SheetContent
               side="left"
-              className="w-full sm:w-[320px] bg-black/95 backdrop-blur-2xl border-border/30 flex flex-col justify-between"
+              className="w-full sm:w-[320px] bg-black/95 backdrop-blur-2xl border-border/30"
             >
-              <div className="flex flex-col gap-8 mt-16 px-4">
+              <nav className="flex flex-col space-y-6 mt-16">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
@@ -92,11 +93,10 @@ const Navigation = () => {
                     )}
                   </Link>
                 ))}
-              </div>
+              </nav>
             </SheetContent>
           </Sheet>
 
-          {/* Company Name & Logo - Mobile/Tablet */}
           <Link to="/" className="flex items-center gap-2 group">
             <span className="text-base sm:text-lg font-bold tracking-wider uppercase tech-glow group-hover:tech-glow-strong transition-all">
               NAZ <span className="font-black">X</span>MEDIA
