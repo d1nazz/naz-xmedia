@@ -18,7 +18,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Trigger Netlify form submission
     const form = e.target as HTMLFormElement;
     const data = new FormData(form);
 
@@ -64,7 +63,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Contact Form */}
           <div className="flex justify-center">
             <form
@@ -74,7 +73,6 @@ const Contact = () => {
               onSubmit={handleSubmit}
               className="w-full max-w-md space-y-6 bg-surface p-8 rounded-2xl border border-border/40 shadow-md"
             >
-              {/* Hidden field for Netlify */}
               <input type="hidden" name="form-name" value="contact" />
 
               <div>
@@ -162,8 +160,9 @@ const Contact = () => {
             </form>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info + What Happens Next */}
           <div className="flex flex-col justify-center space-y-8">
+            {/* Get In Touch */}
             <Card className="p-8 surface-elevated border-border/50 hover-glow">
               <h3 className="text-2xl font-bold mb-6 animated-underline">Get In Touch</h3>
               <div className="space-y-6">
@@ -203,6 +202,31 @@ const Contact = () => {
                       Canada
                     </p>
                   </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* What Happens Next */}
+            <Card className="p-8 surface-elevated border-border/50 hover-glow">
+              <h3 className="text-2xl font-bold mb-6 animated-underline">What Happens Next?</h3>
+              <div className="space-y-4">
+                <div>
+                  <div className="font-semibold mb-2 text-sm sm:text-base">1. Consultation</div>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    We’ll schedule a call to discuss your business, goals, and challenges in detail.
+                  </p>
+                </div>
+                <div>
+                  <div className="font-semibold mb-2 text-sm sm:text-base">2. Strategy</div>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    We’ll analyze your situation and present a tailored growth strategy.
+                  </p>
+                </div>
+                <div>
+                  <div className="font-semibold mb-2 text-sm sm:text-base">3. Dominate</div>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    Once aligned, we’ll implement systems that position you to lead your market.
+                  </p>
                 </div>
               </div>
             </Card>
