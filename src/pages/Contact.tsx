@@ -18,11 +18,27 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: 'Message Sent!',
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: '', email: '', businessName: '', message: '' });
+    // Trigger Netlify form submission
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      body: data,
+    })
+      .then(() => {
+        toast({
+          title: 'Message Sent!',
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: '', email: '', businessName: '', message: '' });
+      })
+      .catch(() => {
+        toast({
+          title: 'Submission Failed',
+          description: 'Please try again or email us directly.',
+        });
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,8 +47,7 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      {/* Main wrapper */}
-      <div className="w-full px-4 sm:px-6 lg:px-12 py-12 sm:py-20 bg-background overflow-x-hidden">
+      <div className="w-full px-4 sm:px-6 lg:px-12 py-12 sm:py-20 bg-background overflow-x-hidden flex flex-col items-center">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-up max-w-4xl mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 scan-line tech-glow leading-tight">
@@ -49,10 +64,19 @@ const Contact = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-7xl mx-auto items-start">
+        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Contact Form */}
-          <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="flex justify-center">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="w-full max-w-md space-y-6 bg-surface p-8 rounded-2xl border border-border/40 shadow-md"
+            >
+              {/* Hidden field for Netlify */}
+              <input type="hidden" name="form-name" value="contact" />
+
               <div>
                 <label
                   htmlFor="name"
@@ -130,7 +154,7 @@ const Contact = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full sm:w-auto text-sm sm:text-base font-bold uppercase tracking-wider py-4 sm:py-6 group relative overflow-hidden"
+                className="w-full text-sm sm:text-base font-bold uppercase tracking-wider py-4 group relative overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <span className="relative">Send Message</span>
@@ -139,25 +163,12 @@ const Contact = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-6 sm:space-y-8">
-            <Card className="p-6 sm:p-8 surface-elevated border-border/50 hover-glow relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/[0.02] to-transparent rounded-full blur-2xl" />
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 relative z-10 animated-underline">
-                Get In Touch
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 sm:mb-8 relative z-10">
-                <span className="hidden sm:inline">
-                  Whether you&apos;re looking to scale your existing business or launch something
-                  new, we&apos;re here to help you build the systems that establish market control.
-                </span>
-                <span className="sm:hidden">
-                  Scale your business with systems built for market control.
-                </span>
-              </p>
-
-              <div className="space-y-6 relative z-10">
+          <div className="flex flex-col justify-center space-y-8">
+            <Card className="p-8 surface-elevated border-border/50 hover-glow">
+              <h3 className="text-2xl font-bold mb-6 animated-underline">Get In Touch</h3>
+              <div className="space-y-6">
                 <div className="flex items-start group">
-                  <Mail className="w-6 h-6 mr-4 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                  <Mail className="w-6 h-6 mr-4 mt-1 group-hover:scale-110 transition-transform" />
                   <div>
                     <div className="font-semibold mb-1">Email</div>
                     <a
@@ -170,7 +181,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start group">
-                  <Phone className="w-6 h-6 mr-4 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                  <Phone className="w-6 h-6 mr-4 mt-1 group-hover:scale-110 transition-transform" />
                   <div>
                     <div className="font-semibold mb-1">Phone</div>
                     <a
@@ -183,7 +194,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start group">
-                  <MapPin className="w-6 h-6 mr-4 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                  <MapPin className="w-6 h-6 mr-4 mt-1 group-hover:scale-110 transition-transform" />
                   <div>
                     <div className="font-semibold mb-1">Location</div>
                     <p className="text-muted-foreground">
@@ -192,46 +203,6 @@ const Contact = () => {
                       Canada
                     </p>
                   </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6 sm:p-8 surface-elevated border-border/50 hover-glow relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/[0.02] to-transparent rounded-full blur-2xl" />
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 relative z-10 animated-underline">
-                What Happens Next?
-              </h3>
-              <div className="space-y-3 sm:space-y-4 relative z-10">
-                <div>
-                  <div className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">
-                    1. Consultation
-                  </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    <span className="hidden sm:inline">
-                      We&apos;ll schedule a call to discuss your business, goals, and challenges in
-                      detail.
-                    </span>
-                    <span className="sm:hidden">Discuss your business and goals.</span>
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">2. Strategy</div>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    <span className="hidden sm:inline">
-                      We&apos;ll analyze your situation and present a tailored growth strategy.
-                    </span>
-                    <span className="sm:hidden">Tailored growth strategy.</span>
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">3. Dominate</div>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    <span className="hidden sm:inline">
-                      Once aligned, we&apos;ll implement the systems that position you to lead your
-                      market.
-                    </span>
-                    <span className="sm:hidden">Implement and lead.</span>
-                  </p>
                 </div>
               </div>
             </Card>
