@@ -123,7 +123,7 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto">
             {[
               { label: 'Client Revenue / Year', value: '$1.2M+' },
-              { label: 'Ad Spend / Year', value: '$35K+' },
+              { label: 'Ad Spending / Year', value: '$35K+' },
               { label: 'Team Members', value: '6+' },
             ].map((stat, i) => (
               <div key={i} className="text-center group">
@@ -154,7 +154,7 @@ const Home = () => {
               </p>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                 What began as a vision has evolved into a full-scale digital lab, trusted by brands
-                across eCommerce, SaaS, and emerging industries. In just six months, our systems
+                across eCommerce, SaaS, and emerging industries. In just twelve months, our systems
                 have driven over $1M in client revenue — no investors, no gimmicks, just precision
                 and performance.
               </p>
@@ -171,7 +171,7 @@ const Home = () => {
                 execution. We don't do shortcuts—we build infrastructure.
               </p>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                In 6 months: $1M+ in client revenue. Our team of strategists and operators engineer
+                In 12 months: $1M+ in client revenue. Our team of strategists and operators engineer
                 growth, not just campaigns.
               </p>
             </div>

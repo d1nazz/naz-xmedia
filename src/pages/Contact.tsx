@@ -211,7 +211,7 @@ const Contact = () => {
               <h3 className="text-2xl font-bold mb-6 animated-underline">What Happens Next?</h3>
               <div className="space-y-4">
                 <div>
-                  <div className="font-semibold mb-2 text-sm sm:text-base">1. Consultation</div>
+                  <div className="font-semibold mb-2 text-sm sm:text-base">1 FREE Consultation</div>
                   <p className="text-xs sm:text-sm text-muted-foreground">
                     We’ll schedule a call to discuss your business, goals, and challenges in detail.
                   </p>

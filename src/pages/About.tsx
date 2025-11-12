@@ -30,7 +30,7 @@ const About = () => {
               value: '$1.2M+',
               icon: Trophy,
             },
-            { label: 'Ad Spend', labelFull: 'Ad Spend Managed', value: '$35k+', icon: Target },
+            { label: 'Ad Spend', labelFull: 'Ad Spending Managed', value: '$35k+', icon: Target },
             { label: 'Team', labelFull: 'Expert Team Members', value: '6+', icon: Users },
           ].map((stat, i) => (
             <div key={i} className="text-center group">
@@ -56,7 +56,7 @@ const About = () => {
             {/* Desktop content */}
             <div className="hidden md:block space-y-6 relative z-10">
               <p className="text-xl text-muted-foreground leading-relaxed">
-                At NAZXMEDIA, our mission is simple: to engineer growth. We design custom digital
+                At NAZXMEDIA, our mission is simple, to engineer growth. We design custom digital
                 systems that align with each brand&apos;s vision, amplify visibility, ignite
                 engagement, and convert ambition into measurable results. Every strategy we build is
                 tailored, data-driven, and designed to push businesses beyond their limits.
@@ -128,8 +128,9 @@ const About = () => {
                 title: 'Proven Results',
                 titleFull: 'Proven Track Record',
                 description:
-                  "With over $1.2M in client revenue generated and $35k+ in ad spend managed in the last 6 months, we've proven our systems work across industries and business models.",
-                descriptionMobile: '$1.2M+ revenue, $35k+ ad spend in 6 months. Systems that work.',
+                  "With over $1.2M in client revenue generated and $35k+ in ad spend managed in the last 12 months, we've proven our systems work across industries and business models.",
+                descriptionMobile:
+                  '$1.2M+ revenue, $35k+ ad spend in 12 months. Systems that work.',
               },
             ].map((value, i) => (
               <Card

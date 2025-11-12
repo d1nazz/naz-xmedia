@@ -9,7 +9,7 @@ const CaseStudies = () => {
     {
       icon: ShoppingCart,
       industry: 'E-commerce',
-      client: 'Fein- clothing brand',
+      client: 'Fein - Clothing Brand',
       challenge: 'Struggling with low conversion rates and high customer acquisition costs',
       result: '185% Revenue Increase',
       metrics: [
@@ -21,8 +21,8 @@ const CaseStudies = () => {
     },
     {
       icon: Users,
-      industry: 'Lead-Based Business',
-      client: 'S Scape Soloutions- landscaping company',
+      industry: 'Lead - Based Business',
+      client: 'S Scape Solutions - Landscaping Company',
       challenge: 'Inconsistent lead flow and poor lead quality affecting sales pipeline',
       result: '375% More Qualified Leads',
       metrics: [
@@ -39,7 +39,7 @@ const CaseStudies = () => {
       challenge: 'Limited online visibility and difficulty competing with larger franchises',
       result: '120% Booking Increase',
       metrics: [
-        'Local search visibility up 410%',
+        'Local search visibility up 230%',
         'Monthly bookings increased 200%',
         'Market share doubled in target area',
       ],
@@ -65,7 +65,7 @@ const CaseStudies = () => {
       challenge: 'Inconsistent revenue and dependence on live launches',
       result: 'Automated $80K/Month',
       metrics: [
-        'Built evergreen funnel generating $$80K/mo',
+        'Built evergreen funnel generating $80K/mo',
         'Email list grew by 300%',
         'Course completion rate up 67%',
       ],
@@ -82,7 +82,7 @@ const CaseStudies = () => {
         'Repeat purchase rate up 189%',
         'Average order value increased 94%',
       ],
-      timeline: '3 months',
+      timeline: '4 months',
     },
   ];
 
