@@ -153,7 +153,7 @@ const CaseStudies = () => {
               {
                 quote:
                   "NazXmedia completely changed the way we get leads. This season, our phone hasn't stopped ringing with new clients from the ads they set up. Choosing to work with their team was one of the best business decisions we've made—we'll definitely be sticking with them",
-                author: 'Avneet A.',
+                author: 'shawn s.',
                 company: 'Landscaping',
               },
               {
