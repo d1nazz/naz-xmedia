@@ -211,7 +211,7 @@ const Home = () => {
               {
                 quote:
                   'NazXMedia completely changed how we get leads. This season, our phones haven’t stopped ringing with new clients from their ads. Working with their team was easily one of the best decisions we’ve made.',
-                author: 'Avneet A.',
+                author: 'Shawn S.',
                 company: 'landscaping',
               },
             ].map((testimonial, i) => (
