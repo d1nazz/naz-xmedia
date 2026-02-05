@@ -51,7 +51,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="text-xs text-muted-foreground">
-            © 2025 NAZ X Media, All Rights Reserved.
+            © 2026 NAZ X Media, All Rights Reserved.
           </div>
         </div>
       </div>
