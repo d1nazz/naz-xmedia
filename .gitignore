@@ -38,5 +38,7 @@ coverage/
 .cache/
 .temp/
 .tmp/
-package-lock.json
+
+# Local Netlify CLI link state
+.netlify/
 
