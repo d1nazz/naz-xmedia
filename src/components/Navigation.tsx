@@ -18,7 +18,7 @@ const Navigation = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 backdrop-blur-xl bg-background/95">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.07] backdrop-blur-xl bg-background/90 supports-[backdrop-filter]:bg-background/75">
       <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-5">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-between">
@@ -29,16 +29,16 @@ const Navigation = () => {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  'text-sm font-semibold uppercase tracking-wider relative group',
-                  location.pathname === link.path ? 'text-foreground' : 'text-muted-foreground'
+                  'text-sm font-semibold uppercase tracking-wider relative group transition-colors duration-300',
+                  location.pathname === link.path
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-[hsl(var(--naz-green))]'
                 )}
               >
                 {link.name}
-                {/* Hover underline */}
-                <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                {/* Active indicator */}
+                <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[hsl(var(--naz-green)/0.5)] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 {location.pathname === link.path && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full animate-pulse" />
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[hsl(var(--naz-green))] shadow-[0_0_10px_hsl(var(--naz-green-glow)/0.5)]" />
                 )}
               </Link>
             ))}
@@ -46,8 +46,8 @@ const Navigation = () => {
 
           {/* Logo + Name (Desktop) */}
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="text-xl font-bold tracking-wider uppercase tech-glow group-hover:tech-glow-strong transition-all">
-              NAZ <span className="font-black">X</span>MEDIA
+            <span className="font-display text-xl font-extrabold tracking-wider uppercase transition-all">
+              NAZ <span className="text-[hsl(var(--naz-green))]">X</span>MEDIA
             </span>
             <img
               src={logo}
@@ -72,7 +72,7 @@ const Navigation = () => {
 
             <SheetContent
               side="left"
-              className="w-full sm:w-[320px] bg-black/95 backdrop-blur-2xl border-border/30"
+              className="w-full sm:w-[320px] bg-background/98 backdrop-blur-2xl border-white/[0.08]"
             >
               <nav className="flex flex-col space-y-6 mt-16">
                 {navLinks.map((link) => (
@@ -98,8 +98,8 @@ const Navigation = () => {
           </Sheet>
 
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="text-base sm:text-lg font-bold tracking-wider uppercase tech-glow group-hover:tech-glow-strong transition-all">
-              NAZ <span className="font-black">X</span>MEDIA
+            <span className="font-display text-base sm:text-lg font-extrabold tracking-wider uppercase transition-all">
+              NAZ <span className="text-[hsl(var(--naz-green))]">X</span>MEDIA
             </span>
             <img
               src={logo}

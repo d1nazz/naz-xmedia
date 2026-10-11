@@ -21,6 +21,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         grotesk: ['Space Grotesk', 'sans-serif'],
+        display: ['Syne', 'Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -59,6 +60,15 @@ const config: Config = {
         },
         surface: 'hsl(var(--surface))',
         'surface-elevated': 'hsl(var(--surface-elevated))',
+        naz: {
+          green: 'hsl(var(--naz-green) / <alpha-value>)',
+          'green-dim': 'hsl(var(--naz-green-dim) / <alpha-value>)',
+          'green-muted': 'hsl(var(--naz-green-muted) / <alpha-value>)',
+          'green-glow': 'hsl(var(--naz-green-glow) / <alpha-value>)',
+          panel: 'hsl(var(--naz-panel) / <alpha-value>)',
+          carbon: 'hsl(var(--naz-carbon) / <alpha-value>)',
+          border: 'hsl(var(--naz-border-subtle) / <alpha-value>)',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
