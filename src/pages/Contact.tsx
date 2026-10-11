@@ -1,47 +1,65 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+const emptyForm = {
+  name: '',
+  email: '',
+  businessName: '',
+  message: '',
+};
+
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    businessName: '',
-    message: '',
-  });
+  const submittingRef = useRef(false);
+  const [formData, setFormData] = useState(emptyForm);
+  const [status, setStatus] = useState<FormStatus>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const data = new FormData(form);
+    if (submittingRef.current) return;
 
-    fetch('/', {
-      method: 'POST',
-      body: data,
-    })
-      .then(() => {
-        toast({
-          title: 'Message Sent!',
-          description: "We'll get back to you within 24 hours.",
-        });
-        setFormData({ name: '', email: '', businessName: '', message: '' });
-      })
-      .catch(() => {
-        toast({
-          title: 'Submission Failed',
-          description: 'Please try again or email us directly.',
-        });
+    submittingRef.current = true;
+    setStatus('submitting');
+
+    const body = new URLSearchParams({
+      'form-name': 'contact',
+      name: formData.name,
+      email: formData.email,
+      businessName: formData.businessName,
+      message: formData.message,
+    });
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
       });
+
+      if (!response.ok) {
+        setStatus('error');
+        return;
+      }
+
+      setFormData(emptyForm);
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    } finally {
+      submittingRef.current = false;
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+    setStatus((current) => (current === 'submitting' ? current : 'idle'));
   };
 
   return (
@@ -71,6 +89,7 @@ const Contact = () => {
               method="POST"
               data-netlify="true"
               onSubmit={handleSubmit}
+              aria-busy={status === 'submitting'}
               className="w-full max-w-md space-y-6 bg-surface p-8 rounded-2xl border border-border/40 shadow-md"
             >
               <input type="hidden" name="form-name" value="contact" />
@@ -152,11 +171,25 @@ const Contact = () => {
               <Button
                 type="submit"
                 size="lg"
+                disabled={status === 'submitting'}
+                aria-disabled={status === 'submitting'}
                 className="w-full text-sm sm:text-base font-bold uppercase tracking-wider py-4 group relative overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <span className="relative">Send Message</span>
+                <span className="relative">{status === 'submitting' ? 'Sending...' : 'Send Message'}</span>
               </Button>
+
+              <p
+                className="min-h-10 text-sm leading-snug text-foreground"
+                role={status === 'error' ? 'alert' : 'status'}
+                aria-live={status === 'error' ? 'assertive' : 'polite'}
+                aria-atomic="true"
+              >
+                {status === 'success' &&
+                  "Message sent successfully. We'll get back to you within 24 hours."}
+                {status === 'error' &&
+                  "We couldn't send your message. Please try again or email us directly at nazxmedia@gmail.com."}
+              </p>
             </form>
           </div>
 

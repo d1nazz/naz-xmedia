@@ -388,24 +388,27 @@ const Home = () => {
           <p className="text-sm text-muted-foreground mb-6">
             Subscribe for updates, promotions, and insider offers.
           </p>
-          <form
-            className="flex flex-col sm:flex-row gap-3"
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
+          <div className="flex flex-col sm:flex-row gap-3" aria-describedby="newsletter-status">
             <Input
               type="email"
               placeholder="Email address"
+              disabled
+              aria-disabled="true"
               className="bg-background/80 border-white/15 h-12"
             />
-            <Button type="submit" className="h-12 px-8 uppercase tracking-widest text-xs shrink-0">
+            <Button
+              type="button"
+              disabled
+              aria-disabled="true"
+              className="h-12 px-8 uppercase tracking-widest text-xs shrink-0"
+            >
               Subscribe
             </Button>
-          </form>
-          <p className="text-[10px] text-muted-foreground mt-4">
-            By subscribing you agree to our privacy policy. NAZ XMedia — Toronto, Canada.
+          </div>
+          <p id="newsletter-status" className="text-sm text-foreground mt-4">
+            Newsletter signup coming soon.
           </p>
+          <p className="text-[10px] text-muted-foreground mt-2">NAZ XMedia — Toronto, Canada.</p>
         </div>
       </section>
     </PageLayout>
